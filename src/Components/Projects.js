@@ -1,8 +1,11 @@
 import React from 'react'
+import Header from './Header'
 
 const Projects = () => {
   return (
-    <div>
+    
+    <div className='min-h-screen bg-black'>
+    <Header />
       Projects
     </div>
   )

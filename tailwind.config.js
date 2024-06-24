@@ -7,6 +7,8 @@ module.exports = {
     extend: {
       fontFamily: {
         'chakra-petch': ['Chakra Petch', 'sans-serif'],
+        'fjalla-one': ['Fjalla One', 'sans-serif'],
+        'zilla-slab': ['Zilla Slab', 'serif'],
       },
     },
   },
