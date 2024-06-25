@@ -140,7 +140,7 @@ const Browse = () => {
             <h2 className="text-4xl text-white font-chakra-petch mb-4">
               Hi, I am Rohit
             </h2>
-            <p className="text-xl">
+            <p className="text-xl relative z-20">
               I am a Computer Science Student at NITK. I have a deep passion for
               coding and constantly strive to enhance my skills by learning new
               technologies. I love tackling challenging problems and finding
