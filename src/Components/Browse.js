@@ -42,6 +42,7 @@ const projects = [
 
 const Browse = () => {
   const [showForm, setShowForm] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
   const toggleForm = () => {
     setShowForm(!showForm);
@@ -101,7 +102,7 @@ const Browse = () => {
       <Header />
       {/* Navigation Bar */}
       <nav className="flex items-center justify-center p-4 bg-gradient-to-b from-black">
-        <ul className="flex space-x-8 font-bold text-4xl text-yellow-400 font-lato">
+        <ul className="flex space-x-8 font-bold text-4xl text-white font-lato">
           <li className="cursor-pointer transition-transform transform hover:scale-105">
             <span onClick={() => scrollToSection("about-section")}>About</span>
           </li>
