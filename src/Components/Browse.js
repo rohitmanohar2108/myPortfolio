@@ -7,6 +7,7 @@ import animationData from "../animation/animation.json"; // Ensure this path is 
 import animationDataTwo from "../animation/animationTwo.json";
 import { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
+import Footer from "./Footer";
 
 // Define projects array
 const projects = [
@@ -367,6 +368,9 @@ const Browse = () => {
           alt="background"
           className="absolute inset-0 h-full w-full object-cover opacity-50"
         />
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
