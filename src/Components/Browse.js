@@ -1,11 +1,17 @@
 import Header from "./Header";
 import Lottie from "react-lottie";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaTwitter,
+  FaArrowUp,
+} from "react-icons/fa";
 
 import animationData from "../animation/animation.json"; // Ensure this path is correct
 import animationDataTwo from "../animation/animationTwo.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import Footer from "./Footer";
 
@@ -68,13 +74,34 @@ const Browse = () => {
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
   };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = document.documentElement.scrollTop;
+      const clientHeight = document.documentElement.clientHeight;
+      if (scrollTop + clientHeight >= scrollHeight - 100) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-black">
       <Header />
       {/* Navigation Bar */}
       <nav className="flex items-center justify-center p-4 bg-gradient-to-b from-black">
-        <ul className="flex space-x-8 font-bold text-4xl text-yellow-400 font-chakra-petch">
+        <ul className="flex space-x-8 font-bold text-4xl text-yellow-400 font-lato">
           <li className="cursor-pointer transition-transform transform hover:scale-105">
             <span onClick={() => scrollToSection("about-section")}>About</span>
           </li>
@@ -104,14 +131,14 @@ const Browse = () => {
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
           <motion.h1
-            className="text-7xl text-yellow-400 font-chakra-petch cursor-pointer animate-pulse"
+            className="text-7xl text-yellow-400 font-lato cursor-pointer animate-pulse"
             whileHover={{ scale: 1.1 }}
             style={{ opacity: 1.5 }}
           >
             Best is yet to come!!
           </motion.h1>
           <motion.h2
-            className="text-4xl text-white font-chakra-petch mt-4"
+            className="text-4xl text-white font-lato mt-4"
             whileHover={{ scale: 1.1 }}
           >
             Hi, I am Rohit, a Computer Science Student at NITK
@@ -127,17 +154,20 @@ const Browse = () => {
         className="flex flex-col items-center justify-center h-screen bg-gradient-to-tr from-black relative"
       >
         <div className="z-10 flex flex-col items-center justify-center p-16 bg-black bg-opacity-75 rounded-lg transition-all duration-300 hover:bg-gray-900 hover:text-white transform hover:scale-105">
-          <h2 className="relative z-20 text-4xl text-white font-chakra-petch mb-8 transition-transform transform hover:scale-105 cursor-pointer">About</h2>
-          <img
+          <h2 className="relative z-20 text-4xl text-white font-lato mb-8 transition-transform transform hover:scale-105 cursor-pointer">
+            About
+          </h2>
+          <motion.img
             src="https://pps.whatsapp.net/v/t61.24694-24/426021548_762504602111403_3961460611984576911_n.jpg?ccb=11-4&oh=01_Q5AaIEYSGV2H-BdYx5pM2lQ0aeeQkwgRNTW516tXnMr318po&oe=667FFDA4&_nc_sid=e6ed6c&_nc_cat=105"
             alt="profile"
             className="w-56 h-56 rounded-full shadow-lg relative z-20"
+            whileHover={{ scale: 1.1 }}
           />
           <div className="absolute inset-0 z-0 ">
             <Lottie options={defaultOptionsTwo} height={500} width={500} />
           </div>
-          <div className="text-white font-chakra-petch ml-10">
-            <h2 className="text-4xl text-white font-chakra-petch mb-4">
+          <div className="text-white font-lato ml-10">
+            <h2 className="text-4xl text-white font-lato mb-4 ">
               Hi, I am Rohit
             </h2>
             <p className="text-xl relative z-20">
@@ -247,7 +277,9 @@ const Browse = () => {
         className="flex items-center justify-center h-screen bg-gradient-to-tr from-black relative"
       >
         <div className="z-10 flex flex-col items-center justify-center p-16 bg-black bg-opacity-75 rounded-lg transition-all duration-300 hover:bg-gray-900 hover:text-white transform hover:scale-105">
-          <h2 className="text-4xl text-white font-chakra-petch transition-transform transform hover:scale-105 cursor-pointer">Projects</h2>
+          <h2 className="text-4xl text-white font-lato transition-transform transform hover:scale-105 cursor-pointer">
+            Projects
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             {projects.map((project, index) => (
               <motion.div
@@ -258,13 +290,13 @@ const Browse = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-64 object-cover font-chakra-petch"
+                  className="w-full h-64 object-cover font-lato"
                 />
                 <div className="p-4">
                   <h3 className="text-xl font-semibold text-white">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mt-2 font-chakra-petch">
+                  <p className="text-gray-300 mt-2 font-lato">
                     {project.description}
                   </p>
                   <div className="mt-4 py-4">
@@ -272,7 +304,7 @@ const Browse = () => {
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-300 font-chakra-petch transition-transform transform hover:scale-105"
+                      className="inline-flex items-center bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-300 font-lato transition-transform transform hover:scale-105"
                     >
                       <FaGithub className="text-xl mr-2" /> GitHub
                     </a>
@@ -297,7 +329,7 @@ const Browse = () => {
         <div className="z-10 flex flex-col items-center justify-center p-16 bg-black bg-opacity-75 rounded-lg transition-all duration-300 hover:bg-gray-400 hover:text-white transform hover:scale-105">
           {/* Toggle button for showing/hiding the form */}
           <button
-            className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg mt-4 mb-5 transition duration-300 font-chakra-petch transition-transform transform hover:scale-105 cursor-pointer"
+            className="text-3xl bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg mt-4 mb-5 transition duration-300 font-lato transition-transform transform hover:scale-105 cursor-pointer"
             onClick={toggleForm}
           >
             Let's Connect 🚀🚀
@@ -308,7 +340,7 @@ const Browse = () => {
             style={formAnimation}
             className="animated-form-container mt-4 w-full max-w-md "
           >
-            <form className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4 font-chakra-petch">
+            <form className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4 font-lato">
               {/* Form elements */}
               <div className="mb-4">
                 <label
@@ -369,6 +401,14 @@ const Browse = () => {
           className="absolute inset-0 h-full w-full object-cover opacity-50"
         />
       </div>
+      {showScrollButton && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-4 right-4 p-3 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transition-colors"
+        >
+          <FaArrowUp />
+        </button>
+      )}
       <div>
         <Footer />
       </div>
