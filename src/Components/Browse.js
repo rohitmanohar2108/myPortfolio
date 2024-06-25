@@ -127,7 +127,7 @@ const Browse = () => {
         className="flex flex-col items-center justify-center h-screen bg-gradient-to-tr from-black relative"
       >
         <div className="z-10 flex flex-col items-center justify-center p-16 bg-black bg-opacity-75 rounded-lg transition-all duration-300 hover:bg-gray-900 hover:text-white transform hover:scale-105">
-          <h2 className="text-4xl text-white font-chakra-petch mb-8">About</h2>
+          <h2 className="relative z-20 text-4xl text-white font-chakra-petch mb-8 transition-transform transform hover:scale-105 cursor-pointer">About</h2>
           <img
             src="https://pps.whatsapp.net/v/t61.24694-24/426021548_762504602111403_3961460611984576911_n.jpg?ccb=11-4&oh=01_Q5AaIEYSGV2H-BdYx5pM2lQ0aeeQkwgRNTW516tXnMr318po&oe=667FFDA4&_nc_sid=e6ed6c&_nc_cat=105"
             alt="profile"
@@ -247,7 +247,7 @@ const Browse = () => {
         className="flex items-center justify-center h-screen bg-gradient-to-tr from-black relative"
       >
         <div className="z-10 flex flex-col items-center justify-center p-16 bg-black bg-opacity-75 rounded-lg transition-all duration-300 hover:bg-gray-900 hover:text-white transform hover:scale-105">
-          <h2 className="text-4xl text-white font-chakra-petch">Projects</h2>
+          <h2 className="text-4xl text-white font-chakra-petch transition-transform transform hover:scale-105 cursor-pointer">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             {projects.map((project, index) => (
               <motion.div
@@ -300,7 +300,7 @@ const Browse = () => {
             className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg mt-4 mb-5 transition duration-300 font-chakra-petch transition-transform transform hover:scale-105 cursor-pointer"
             onClick={toggleForm}
           >
-            Let's Connect
+            Let's Connect 🚀🚀
           </button>
 
           {/* Animated form */}
@@ -308,7 +308,7 @@ const Browse = () => {
             style={formAnimation}
             className="animated-form-container mt-4 w-full max-w-md "
           >
-            <form className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4 ">
+            <form className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4 font-chakra-petch">
               {/* Form elements */}
               <div className="mb-4">
                 <label
