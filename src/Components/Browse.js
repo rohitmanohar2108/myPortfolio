@@ -5,6 +5,8 @@ import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa";
 
 import animationData from "../animation/animation.json"; // Ensure this path is correct
 import animationDataTwo from "../animation/animationTwo.json";
+import { useState } from "react";
+import { useSpring, animated } from "@react-spring/web";
 
 // Define projects array
 const projects = [
@@ -22,10 +24,29 @@ const projects = [
       "A simple and beautiful Restaurent Website made with Pure React JS. With some beautiful Animation and data fetching using API.",
     githubLink: "https://github.com/rohitmanohar2108/feast",
   },
-  // Add more projects as needed
+  {
+    title: "YouTube",
+    image: "https://do6gp1uxl3luu.cloudfront.net/projects/YoutubeProject.png",
+    description:
+      "A simple and beautiful Restaurent Website made with Pure React JS. With some beautiful Animation and data fetching using API.",
+    githubLink: "https://github.com/rohitmanohar2108/feast",
+  },
 ];
 
 const Browse = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
+  const formAnimation = useSpring({
+    height: showForm ? "auto" : 0, // Set height to 'auto' when form is shown, 0 when hidden
+    opacity: showForm ? 1 : 0, // Fade in/out the form
+    overflowY: "hidden", // Hide any overflow content during animation
+    marginTop: showForm ? 0 : -16,
+  });
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -68,7 +89,6 @@ const Browse = () => {
           </li>
         </ul>
       </nav>
-
       {/* First Section (Initial Splash) */}
       <motion.div
         className="flex flex-col items-center justify-center h-screen bg-gradient-to-tr from-black relative"
@@ -100,7 +120,6 @@ const Browse = () => {
           </motion.div>
         </div>
       </motion.div>
-
       {/* Second Section (About) */}
       <div
         id="about-section"
@@ -125,14 +144,14 @@ const Browse = () => {
               coding and constantly strive to enhance my skills by learning new
               technologies. I love tackling challenging problems and finding
               innovative solutions. My areas of interest include web
-              development, Programming and many more. I am
-              always eager to collaborate on exciting projects and learn from
-              others in the field. When I am not coding, I enjoy exploring the
-              latest tech trends and participating in hackathons and coding
-              competitions. Let's connect and create something amazing together!
-              Whether it's building a new app, diving into a complex algorithm,
-              or simply exchanging knowledge, I am excited to engage with
-              like-minded individuals and contribute to the tech community.
+              development, Programming and many more. I am always eager to
+              collaborate on exciting projects and learn from others in the
+              field. When I am not coding, I enjoy exploring the latest tech
+              trends and participating in hackathons and coding competitions.
+              Let's connect and create something amazing together! Whether it's
+              building a new app, diving into a complex algorithm, or simply
+              exchanging knowledge, I am excited to engage with like-minded
+              individuals and contribute to the tech community.
               <p className="text-xl mt-4">Connect with me :</p>
               <div className="flex mt-4 space-x-4 z-20 relative">
                 <a
@@ -221,7 +240,6 @@ const Browse = () => {
           className="absolute inset-0 h-full w-full object-cover opacity-50"
         />
       </div>
-
       {/* Third Section (Projects) */}
       <div
         id="projects-section"
@@ -248,14 +266,14 @@ const Browse = () => {
                   <p className="text-gray-300 mt-2 font-chakra-petch">
                     {project.description}
                   </p>
-                  <div className="mt-4">
+                  <div className="mt-4 py-4">
                     <a
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-300 font-chakra-petch"
+                      className="inline-flex items-center bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-300 font-chakra-petch transition-transform transform hover:scale-105"
                     >
-                      <FaGithub className="mr-2" /> GitHub
+                      <FaGithub className="text-xl mr-2" /> GitHub
                     </a>
                   </div>
                 </div>
@@ -269,64 +287,87 @@ const Browse = () => {
           className="absolute inset-0 h-full w-full object-cover opacity-50"
         />
       </div>
-
       {/* Fourth Section (Contact) */}
       // Fourth Section (Contact)
-<div
-  id="contact-section"
-  className="flex flex-col items-center justify-center h-screen bg-gradient-to-tr from-black relative"
->
-  <div className="z-10 flex flex-col items-center justify-center p-16 bg-black bg-opacity-75 rounded-lg transition-all duration-300 hover:bg-gray-900 hover:text-white transform hover:scale-105">
-    <h2 className="text-4xl text-white font-chakra-petch">Contact</h2>
-    <form className="mt-8 w-full max-w-md">
-      <div className="mb-4">
-        <label className="block text-white text-sm font-bold mb-2" htmlFor="name">
-          Name
-        </label>
-        <input
-          className="w-full px-3 py-2 text-black rounded"
-          id="name"
-          type="text"
-          placeholder="Your Name"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-white text-sm font-bold mb-2" htmlFor="email">
-          Email
-        </label>
-        <input
-          className="w-full px-3 py-2 text-black rounded"
-          id="email"
-          type="email"
-          placeholder="Your Email"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-white text-sm font-bold mb-2" htmlFor="message">
-          Message
-        </label>
-        <textarea
-          className="w-full px-3 py-2 text-black rounded"
-          id="message"
-          rows="4"
-          placeholder="Your Message"
-        ></textarea>
-      </div>
-      <button
-        className="w-full bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300"
-        type="submit"
+      <div
+        id="contact-section"
+        className="flex flex-col items-center justify-center h-screen bg-gradient-to-tr from-black relative"
       >
-        Send
-      </button>
-    </form>
-  </div>
-  <img
-    src="https://images.unsplash.com/photo-1502239608882-93b729c6af43?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    alt="background"
-    className="absolute inset-0 h-full w-full object-cover opacity-50"
-  />
-</div>
+        <div className="z-10 flex flex-col items-center justify-center p-16 bg-black bg-opacity-75 rounded-lg transition-all duration-300 hover:bg-gray-400 hover:text-white transform hover:scale-105">
+          {/* Toggle button for showing/hiding the form */}
+          <button
+            className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg mt-4 mb-5 transition duration-300 font-chakra-petch transition-transform transform hover:scale-105 cursor-pointer"
+            onClick={toggleForm}
+          >
+            Let's Connect
+          </button>
 
+          {/* Animated form */}
+          <animated.div
+            style={formAnimation}
+            className="animated-form-container mt-4 w-full max-w-md "
+          >
+            <form className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4 ">
+              {/* Form elements */}
+              <div className="mb-4">
+                <label
+                  className="block text-white text-sm font-bold mb-2"
+                  htmlFor="name"
+                >
+                  Name
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="name"
+                  type="text"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div className="mb-6">
+                <label
+                  className="block text-white text-sm font-bold mb-2"
+                  htmlFor="email"
+                >
+                  Email
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="email"
+                  type="email"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  className="block text-white text-sm font-bold mb-2"
+                  htmlFor="message"
+                >
+                  Message
+                </label>
+                <textarea
+                  className="w-full px-3 py-2 text-black rounded"
+                  id="message"
+                  rows="4"
+                  placeholder="Your Message"
+                ></textarea>
+              </div>
+              <div className="flex items-center justify-center">
+                <button
+                  className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-transform transform hover:scale-105 cursor-pointer"
+                  type="button"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </animated.div>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1502239608882-93b729c6af43?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="background"
+          className="absolute inset-0 h-full w-full object-cover opacity-50"
+        />
+      </div>
     </div>
   );
 };
