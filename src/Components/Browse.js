@@ -21,7 +21,7 @@ const projects = [
     title: "FilmNinja",
     image: "https://do6gp1uxl3luu.cloudfront.net/projects/netflixProject.png",
     description:
-      "I created a Netflix clone using ReactJs and Sass. This is a clone of Netflix website. And played a lot with Api.",
+      "I created a Netflix clone using ReactJs and Tailwindcss. This is a clone of Netflix website. And played a lot with Api.",
     githubLink: "https://github.com/rohitmanohar2108/FilmNinja",
   },
   {
@@ -102,16 +102,16 @@ const Browse = () => {
       <Header />
       {/* Navigation Bar */}
       <nav className="flex items-center justify-center p-4 bg-gradient-to-b from-black">
-        <ul className="flex space-x-8 font-bold text-4xl text-white font-lato">
-          <li className="cursor-pointer transition-transform transform hover:scale-105">
+        <ul className="flex space-x-8 font-bold text-4xl text-white  font-lato">
+          <li className="cursor-pointer hover:text-yellow-400 transition-transform transform hover:scale-105">
             <span onClick={() => scrollToSection("about-section")}>About</span>
           </li>
-          <li className="cursor-pointer transition-transform transform hover:scale-105">
+          <li className="cursor-pointer hover:text-yellow-400 transition-transform transform hover:scale-105">
             <span onClick={() => scrollToSection("projects-section")}>
               Projects
             </span>
           </li>
-          <li className="cursor-pointer transition-transform transform hover:scale-105">
+          <li className="cursor-pointer hover:text-yellow-400 transition-transform transform hover:scale-105">
             <span onClick={() => scrollToSection("contact-section")}>
               Contact
             </span>
@@ -155,7 +155,7 @@ const Browse = () => {
         className="flex flex-col items-center justify-center h-screen bg-gradient-to-tr from-black relative"
       >
         <div className="z-10 flex flex-col items-center justify-center p-16 bg-black bg-opacity-75 rounded-lg transition-all duration-300 hover:bg-gray-900 hover:text-white transform hover:scale-105">
-          <h2 className="relative z-20 text-4xl text-white font-lato mb-8 transition-transform transform hover:scale-105 cursor-pointer">
+          <h2 className="relative z-20 text-4xl text-white hover:text-yellow-400 font-lato mb-8 transition-transform transform hover:scale-105 cursor-pointer">
             About
           </h2>
           <motion.img
@@ -278,7 +278,7 @@ const Browse = () => {
         className="flex items-center justify-center h-screen bg-gradient-to-tr from-black relative"
       >
         <div className="z-10 flex flex-col items-center justify-center p-16 bg-black bg-opacity-75 rounded-lg transition-all duration-300 hover:bg-gray-900 hover:text-white transform hover:scale-105">
-          <h2 className="text-4xl text-white font-lato transition-transform transform hover:scale-105 cursor-pointer">
+          <h2 className="text-4xl text-white hover:text-yellow-400 font-lato transition-transform transform hover:scale-105 cursor-pointer">
             Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
@@ -291,7 +291,7 @@ const Browse = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-64 object-cover font-lato"
+                  className="w-full h-64 object-cover  font-lato"
                 />
                 <div className="p-4">
                   <h3 className="text-xl font-semibold text-white">
