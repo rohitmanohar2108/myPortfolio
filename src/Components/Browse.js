@@ -33,7 +33,7 @@ const projects = [
   },
   {
     title: "YouTube",
-    image: "https://do6gp1uxl3luu.cloudfront.net/projects/YoutubeProject.png",
+    image: "/Users/rohitvijaymanohar/Downloads/Screenshot 2024-06-26 at 7.32.44 PM (2).png",
     description:
       "A simple and beautiful Restaurent Website made with Pure React JS. With some beautiful Animation and data fetching using API.",
     githubLink: "https://github.com/rohitmanohar2108/feast",
